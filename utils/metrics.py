@@ -131,9 +131,11 @@ class MetricComputer:
                     inputs = src_batch * 0.5 + 0.5
             elif inputs.shape[0] < 2500:
                 if self.use_vae:
-                    inputs = jnp.concatenate([inputs, self.vae_decode_fn(src_batch) * 0.5 + 0.5])
+                    inputs = jnp.concatenate(
+                        [inputs, self.vae_decode_fn(src_batch)[: int(2500 - inputs.shape[0])] * 0.5 + 0.5]
+                    )
                 else:
-                    inputs = jnp.concatenate([inputs, src_batch * 0.5 + 0.5])
+                    inputs = jnp.concatenate([inputs, src_batch[: int(2500 - inputs.shape[0])] * 0.5 + 0.5])
             # sample from model
             sample_batch, nfe = jax.vmap(partial_sample_fn)(src_batch)
             nfes.append(nfe)
@@ -157,7 +159,7 @@ class MetricComputer:
             if samples is None:
                 samples = sample_batch * 0.5 + 0.5
             elif samples.shape[0] < 2500:
-                samples = jnp.concatenate([samples, sample_batch * 0.5 + 0.5])
+                samples = jnp.concatenate([samples, sample_batch[: int(2500 - samples.shape[0])] * 0.5 + 0.5])
             if self.eval_labelwise:
                 for idx, label in enumerate(self.eval_labels):
                     if label == 201:

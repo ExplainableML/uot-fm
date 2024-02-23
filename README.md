@@ -103,7 +103,7 @@ Here, `base_config.py` defines settings set for all experiments like checkpointi
 We leverage `wandb` for logging. Set your wandb key either through the enviornment variable `WANDB_API_KEY` or directly in `base_config.py`. Additionally, you can optionally specify a wandb group and entity in `base_config.py`.
 
 ### Training
-Training results from the paper can be reproduced by calling `main.py`, which by default uses mode `"train"`, and specifying a config file. The configs for each dataset and method can be found in the corresponding dataset folder. E.g. to train `UOT-FM` on `EMNIST` run:
+Training results from the paper can be reproduced by calling `main.py` and specifying a config file. The configs for each dataset and method can be found in the corresponding dataset folder. E.g. to train `UOT-FM` on `EMNIST` run:
 
 ```
 python main.py --config=configs/emnist/uotfm.py
@@ -121,7 +121,7 @@ python main.py --config=configs/cifar10/uotfm_tau099.py
 python main.py --config=configs/celeba256/add_glasses/otfm.py
 ```
 
-Parameters can be changed by either directly passing them or by creating/editing new configs. E.g. the results from Appendix C.3 on the effect of different batch-sizes can be reproduced by:
+Parameters can be changed by either directly passing them or by creating/editing new configs. To reproduce the results from Appendix C.3 on the effect of different batch-sizes, can e.g. be done by:
 
 ```
 python main.py --config=configs/emnist/uotfm.py --config.training.batch_size=512 --config.training.iterations=250000 --config.name="uot-fm_emnist_bs512"
@@ -129,7 +129,7 @@ python main.py --config=configs/emnist/uotfm.py --config.training.batch_size=512
 
 Note, that here we also adjust the number of iterations such that the total amount of seen images will stay the same during training.
 
-By default, all models will be evaluated every `config.training.eval_freq` iterations.
+By default, all models will be evaluated every `config.training.eval_freq` iterations during training.
 
 
 ![](assets/celeba256_samples.png)
@@ -149,7 +149,7 @@ To evaluate a trained model with a low-cost solver, as in Appendix C.2, run:
 python main.py --mode="eval" --config=configs/celeba256/gender/add_glasses/uot-fm.py --config.solver="euler" --config.dt0=0.05
 ```
 
-When `dt0` is specified the solver uses a constant stepize with a total of `1/dt0` steps, in this case 20 function evaluations.
+When `dt0` is specified the solver uses a constant stepize with a total of `1/dt0` steps, in this case resulting in 20 function evaluations.
 
 
 ## Citation
