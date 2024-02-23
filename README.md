@@ -71,7 +71,7 @@ After downloading both datasets your data folder should include the following:
 │   │   ├── list_eval_partition.txt
 ```
 
-#### FID reference statistics
+#### FID reference statistics 
 We use the FID implementation provided by [jax-fid](https://github.com/matthias-wright/jax-fid). We precompute all reference statistics needed for the FID computation for `EMNIST`, `CIFAR10`, and `CelebA`. To do this, run
 
 ```
