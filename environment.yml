@@ -1,0 +1,26 @@
+name: uot-fm
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - jaxlib=0.4.23=*cuda*
+  - jax=0.4.23
+  - flax=0.8.1
+  - optax=0.1.9
+  - ott-jax=0.4.5
+  - equinox
+  - diffrax
+  - tensorflow=2.15
+  - tensorflow-datasets
+  - scipy
+  - einops
+  - opencv
+  - wandb
+  - ml-collections
+  - pip
+  - pip:
+    - blobfile
+    - dm-pix
+    - diffusers[flax]
+    - transformers
+    - tqdm
