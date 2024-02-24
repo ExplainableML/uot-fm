@@ -7,6 +7,7 @@ def get_male_config(config):
     config.data.attribute_id = 20
     config.data.map_forward = True
     config.data.precomputed_stats_file = "celeba64_male"
+    config.data.eval_labels = [15, 17, 35]
 
     config.eval.labelwise = True
 

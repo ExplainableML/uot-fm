@@ -7,6 +7,7 @@ def get_female_config(config):
     config.data.attribute_id = 20
     config.data.map_forward = False
     config.data.precomputed_stats_file = "celeba64_female"
+    config.data.eval_labels = [15, 17, 35]
 
     config.eval.labelwise = True
 
