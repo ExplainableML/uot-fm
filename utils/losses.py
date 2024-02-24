@@ -203,7 +203,7 @@ class FlowMatching:
                 solver = dfx.Heun()
             else:
                 raise ValueError(f"Unknown solver {self.solver}")
-            if self.dt0 is None:
+            if self.dt0 == 0.0:
                 stepsize_controller = dfx.PIDController(rtol=1e-5, atol=1e-5)
             else:
                 stepsize_controller = dfx.ConstantStepSize()

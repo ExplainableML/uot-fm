@@ -5,7 +5,7 @@ def get_otfm_config():
     config = get_base_config()
     config.t1 = 1.0
     config.t0 = 0.0
-    config.dt0 = None
+    config.dt0 = 0.0
     config.solver = "tsit5"
 
     # training
