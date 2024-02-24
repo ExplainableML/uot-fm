@@ -5,9 +5,9 @@ def get_base_config():
     config = ml_collections.ConfigDict()
     config.seed = 42
     config.overfit_to_one_batch = False
-    config.wandb_key = None
-    config.wandb_group = None
-    config.wandb_entity = None
+    config.wandb_key = ""
+    config.wandb_group = ""
+    config.wandb_entity = ""
 
     # training
     config.training = training = ml_collections.ConfigDict()
@@ -26,6 +26,6 @@ def get_base_config():
     eval.save_samples = True
     eval.num_save_samples = 7
     eval.labelwise = True
-    eval.checkpoint_step = None
+    eval.checkpoint_step = 0
 
     return config

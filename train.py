@@ -134,8 +134,8 @@ def train(config: ml_collections.ConfigDict, workdir: str):
     wandb.login(key=config.wandb_key)
     wandb.init(
         project="uot-fm",
-        group=config.wandb_group,
-        entity=config.wandb_entity,
+        group=config.wandb_group if config.wandb_group != "" else None,
+        entity=config.wandb_entity if config.wandb_entity != "" else None,
         name=config.name,
         config=config,
     )
