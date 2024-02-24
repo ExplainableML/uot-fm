@@ -138,7 +138,7 @@ By default, all models will be evaluated every `config.training.eval_freq` itera
 To further evaluate a model, only evaluation can be run by adding mode `"eval"` as follows:
 
 ```
-python main.py --mode="eval" --config=configs/celeba256/gender/add_glasses/uot-fm.py
+python main.py --mode="eval" --config=configs/celeba256/gender/add_glasses/uotfm.py
 ```
 
 By default, this will load the best checkpoint with respect to the specified metric during training. Other checkpoints at iteration `x` can be evaluated by passing `config.eval.checkpoint_step=x`.
@@ -146,7 +146,7 @@ By default, this will load the best checkpoint with respect to the specified met
 To evaluate a trained model with a low-cost solver, as in Appendix C.2, run:
 
 ```
-python main.py --mode="eval" --config=configs/celeba256/gender/add_glasses/uot-fm.py --config.solver="euler" --config.dt0=0.05
+python main.py --mode="eval" --config=configs/celeba256/gender/add_glasses/uotfm.py --config.solver="euler" --config.dt0=0.05
 ```
 
 When `dt0` is specified the solver uses a constant stepize with a total of `1/dt0` steps, in this case resulting in 20 function evaluations.
