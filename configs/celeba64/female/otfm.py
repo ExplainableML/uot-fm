@@ -1,7 +1,7 @@
 from configs.base_otfm import get_otfm_config
-from configs.celeba256.base_unet import get_unet_config
-from configs.celeba256.base_celeba import get_celeba_config
-from configs.celeba256.female.base_female import get_female_config
+from configs.celeba64.base_unet import get_unet_config
+from configs.celeba64.base_celeba import get_celeba_config
+from configs.celeba64.female.base_female import get_female_config
 
 
 def get_config():
