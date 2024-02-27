@@ -205,14 +205,16 @@ class FlowMatching:
                 raise ValueError(f"Unknown solver {self.solver}")
             if self.dt0 == 0.0:
                 stepsize_controller = dfx.PIDController(rtol=1e-5, atol=1e-5)
+                dt0 = None
             else:
                 stepsize_controller = dfx.ConstantStepSize()
+                dt0 = self.dt0
             sol = dfx.diffeqsolve(
                 term,
                 solver,
                 self.t0,
                 self.t1,
-                self.dt0,
+                dt0,
                 x0,
                 stepsize_controller=stepsize_controller,
             )

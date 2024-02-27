@@ -129,13 +129,13 @@ class MetricComputer:
                     inputs = self.vae_decode_fn(src_batch) * 0.5 + 0.5
                 else:
                     inputs = src_batch * 0.5 + 0.5
-            elif inputs.shape[0] < 2500:
+            elif inputs.shape[0] < 2400:
                 if self.use_vae:
                     inputs = jnp.concatenate(
-                        [inputs, self.vae_decode_fn(src_batch)[: int(2500 - inputs.shape[0])] * 0.5 + 0.5]
+                        [inputs, self.vae_decode_fn(src_batch)[: int(2400 - inputs.shape[0])] * 0.5 + 0.5]
                     )
                 else:
-                    inputs = jnp.concatenate([inputs, src_batch[: int(2500 - inputs.shape[0])] * 0.5 + 0.5])
+                    inputs = jnp.concatenate([inputs, src_batch[: int(2400 - inputs.shape[0])] * 0.5 + 0.5])
             # sample from model
             sample_batch, nfe = jax.vmap(partial_sample_fn)(src_batch)
             nfes.append(nfe)
@@ -158,8 +158,8 @@ class MetricComputer:
             # safe samples and compute inception activation
             if samples is None:
                 samples = sample_batch * 0.5 + 0.5
-            elif samples.shape[0] < 2500:
-                samples = jnp.concatenate([samples, sample_batch[: int(2500 - samples.shape[0])] * 0.5 + 0.5])
+            elif samples.shape[0] < 2400:
+                samples = jnp.concatenate([samples, sample_batch[: int(2400 - samples.shape[0])] * 0.5 + 0.5])
             if self.eval_labelwise:
                 for idx, label in enumerate(self.eval_labels):
                     if label == 201:
@@ -219,7 +219,7 @@ class MetricComputer:
                         fid_scores.append(fid_score)
                     if self.return_samples:
                         # save image grid loggable to wandb
-                        plot_indices = label_indices[:2500]
+                        plot_indices = label_indices[:2400]
                         rows = []
                         for row_idx in range(nmb_double_rows):
                             rows.append(
