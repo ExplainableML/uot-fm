@@ -43,6 +43,8 @@ def get_preprocess_fn(ds_name: str) -> Callable[[np.ndarray], tf.Tensor]:
             x = central_crop(x, size=256)
         elif ds_name == "celeba64":
             x = tf.image.resize(x, [64, 64], antialias=True)
+        elif ds_name == "emnist":
+            return x
         return tf.transpose(x, perm=[2, 0, 1])
 
     return process_ds
