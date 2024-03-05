@@ -112,7 +112,7 @@ python main.py --config=configs/emnist/uotfm.py
 or for `UOT-FM` with `tau=0.99` on `CIFAR10`:
 
 ```
-python main.py --config=configs/cifar10/uotfm_tau099.py
+python main.py --config=configs/cifar10/uotfm_tau99.py
 ```
 
 `CelebA` includes two folders for the 256x256 version trained with Flow Matching in latent space, and the 64x64 version trained in pixel-space, as well as four sub-folders each for the different tasks. E.g. to train on `CelebA-256` translating `no-glasses -> glasses` with `OT-FM`, run:
