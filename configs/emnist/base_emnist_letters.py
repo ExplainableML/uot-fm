@@ -2,6 +2,8 @@ import ml_collections
 
 
 def get_emnist_letters_config(config):
+    config.task = "translation"
+
     # training
     config.training.num_steps = 500000
     config.training.eval_freq = 50000
